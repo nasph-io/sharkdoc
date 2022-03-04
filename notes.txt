@@ -1,0 +1,1 @@
+node templates/starter/index.js hello world this is me --out=out.js --fn=main
