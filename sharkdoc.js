@@ -1,10 +1,21 @@
 #!/usr/bin/env node
 
-const fs = require('fs-extra');
-const ejs = require('ejs');
-const argv = require('yargs-parser')(process.argv.slice(2));
-const path = require('path');
+import fs from 'fs-extra'
 
+import ejs from 'ejs';
+
+import path from 'path';
+
+import {getAPIData, getVai, api} from './components/invoker.js';
+
+
+import {fileURLToPath} from 'url';
+
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const argv = require('yargs-parser')(process.argv.slice(2));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 
 const main = () => {
@@ -33,10 +44,12 @@ var empty = `
   // 1. Welcome log
   console.log(empty);
   console.log(logo);
+  
   try {
     // 2. Destructure args from argv and set _ array to variable "data"
     //const { _: leftovers, out, fn } = argv;
-    const { apiname, out } = argv;
+
+    const {apiname,out } = argv;
 
     // 3. Add the args we want to use in the .ejs template
     // to an object
@@ -70,25 +83,35 @@ var empty = `
     // sibling "main.ejs" file sibling in the same directory
     const filename = path.join(__dirname, './templates/md-page.ejs');
 
-    const data = {
-      apiname, out, config
-    };
 
-    // 7. Run the renderFile, passing the required args
-    // as outlined on the package docs.
-    ejs.renderFile(filename, data, options, function (err, str) {
-      // str => Rendered HTML string
-      if (err) {
-        console.error(err);
-      }
+    const apiInfo = api.get();
 
-      const outputFile = path.join(process.cwd(), out);
-      fs.ensureFileSync(outputFile);
-      fs.outputFileSync(outputFile, str);
-      console.log(empty);
-      console.log('... Generated file: ' + out + ', created with sucessful ');
-      console.log(empty);
+    apiInfo.then((res)=>{
+      console.log("API Context Loaded for: " + res.data.data.attributes.name);
+
+      const data = {
+        apiname, out, config, res
+      };
+
+      ejs.renderFile(filename, data, options, function (err, str) {
+        // str => Rendered HTML string
+        if (err) {
+          console.error(err);
+        }
+  
+        const outputFile = path.join(process.cwd(), out);
+        fs.ensureFileSync(outputFile);
+        fs.outputFileSync(outputFile, str);
+        console.log(empty);
+        console.log('... Generated file: ' + out + ', created with sucessful ');
+        console.log(empty);
+      });
+
+    
     });
+    
+
+
   } catch (err) {
     console.error(err);
   }

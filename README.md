@@ -4,7 +4,8 @@
 ***Nasph  Platform***   | [ Skalena](https://www.skalena.com)
 
 ![enter image description here](https://avatars.githubusercontent.com/u/67025778?s=200&v=4)
-Sharkdoc is a component part of the **Nasph Platform**, which is 100% Opensouce, delived under Apache Software License 2.0. We combined some interesting concepts in this tool, such as the following: 
+
+    Sharkdoc is a component part of the **Nasph Platform**, which is 100% Opensouce, delived under Apache Software License 2.0. We combined some interesting concepts in this tool, such as the following: 
  
  - ***CMS platform built with Node.js*** - We are using as the backend for the APIs a very popular opensource project called [Strapi](https://strapi.io/). We added some models and some capabilities in order to enable a kind of API Governance center. 
  - ***Static Site Generator*** - We are using the very popular opensource project sponsoded by *facebook*: [Docussaurus](https://docusaurus.io/). Using that approach,  companies are able to deliver a very compeling and complete API Dev & Docs Portal. In our customized Docussaurus distro, we are delivering some additional components, such as Swagger/OAS rendering. 
