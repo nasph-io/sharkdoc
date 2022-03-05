@@ -1,0 +1,7 @@
+
+{ 
+  "govcenter_uri": "NOVO",
+  "api_key": "API_KEY USED TO ACCESS THE API",
+  "doc_path": "WHERE IS THE DOC FOLDER INTO YOU DOCUSSAURUS PROJECT",
+  "docproject": "WHERE IS DOCUSSAURUS ROOT"
+}
