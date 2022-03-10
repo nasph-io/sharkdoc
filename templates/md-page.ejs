@@ -1,5 +1,50 @@
-API Page <%= apiname %>
+---
+sidebar_position: 1
+---
 
-URI: <%=config.govcenter_uri%>
+# API <%=payload.attributes.api_display_name%>
 
-Response: <%=res.data.data.attributes.name%>
+## Informações Gerais
+
+<%=payload.attributes.description%>
+
+## Documentação desta API
+
+<%=payload.attributes.main_documentation%>
+
+## Contrato da API
+
+:::tip Swagger/Open API Spec
+
+O contrato desta API segue abaixo, assim como histórico de versão:
+
+ - [Versão 1.0.0](swagger/agritec-api/)
+
+:::
+
+
+## Preços
+
+Confira as faixas de uso e planos para esta API:
+
+| Plano  | Descrição | Número máximo de requisições  | Valor Mensal (R$)| 
+|--|--|--|
+<% for(var i=0; i<plansPayload.data.length; i++) {%>
+|  <%= plansPayload.data[i].attributes.name %>| <%= plansPayload.data[i].attributes.decription %> | <%= plansPayload.data[i].attributes.numberOfRequests %> | R$ <%=plansPayload.data[i].attributes.price%>
+<% } %>
+
+
+## Detalhes de Excedentes da API
+
+<details>
+  <summary>Caso o consumo da API seja ultrapassado?</summary>
+  <div>
+    <div>
+    Caso ultrapassar o número máximo de requisições por mês, serão cobrados R$1,50 a cada 100 novas requisições. Para mais informações entre em contato conosco pelo e- mail <a href="mailto:agroapi@embrapa.br">agroapi@embrapa.br</a>
+    </div>
+    <br/>
+  </div>
+</details>
+
+
+

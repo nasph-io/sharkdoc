@@ -1,0 +1,16 @@
+API Page <%= apiname %>
+
+URI: <%=config.govcenter_base_uri%>
+
+Response: <%=payload.attributes.api_display_name%>
+
+
+JSON Planos:
+
+  <ul>
+    <% for(var i=0; i<plansPayload.data.length; i++) {%>
+        <li>
+            Nome: <%= plansPayload.data[i].attributes.name %>
+        </li>
+    <% } %>
+</ul>
