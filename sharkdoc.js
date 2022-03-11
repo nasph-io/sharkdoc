@@ -37,7 +37,7 @@ const init = () => {
   console.log(
       chalk.magenta(
           figlet.textSync("sharkdoc", {
-              font: "ogre",
+              font: "Ogre",
               horizontalLayout: "default",
               verticalLayout: "default"
           })
