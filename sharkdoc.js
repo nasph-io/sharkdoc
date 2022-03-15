@@ -25,9 +25,9 @@ var emoji = require('node-emoji')
 
 const init = () => {
     var logo = `
-===============================================    
-    🦈 SharkDoc - API Dev & Doc Portal     
-===============================================
+=====================================================    
+    🦈 SharkDoc - API Dev & Doc Portal   v.0.0.11  
+=====================================================
     `;    
 
   clear();
@@ -87,25 +87,30 @@ const createMdPage = async()=> {
       const options = {};
 
       //check if local json with properties existies
-      if (!fs.existsSync('./sharkdoc.json') ) {
+      if (!fs.existsSync(__dirname + '/sharkdoc.json') ) {
         console.error(` As you haven't created a sharkdoc.json file in the root level from this project, we had created one for you. `);
+        console.error(` Creating the json configs in:  ` + __dirname + '/sharkdoc.json');
         
-        fs.writeFileSync('./sharkdoc.json', constants.INITIAL_JSON);
-  
-        console.log(empty);
+        fs.writeFileSync(__dirname + '/sharkdoc.json', constants.INITIAL_JSON);
         process.exit(1);
       }  
       //end if check if json is in there
 
-      const config = require("./sharkdoc.json");
+      //var currentPath = process.cwd();
+
+      console.log(chalk.magenta("Loading Config JSON from: "+   __dirname +"/sharkdoc.json"));
+
+      const config = require(__dirname +"/sharkdoc.json");
 
       //Set our ejs template file, nominating it to read the
       // sibling "main.ejs" file sibling in the same directory
       const filename = path.join(__dirname, './templates/md-page.ejs');
 
+      const api_endpoint_uri = config.govcenter_base_uri+ `/api/apis?api_key=${apiname}&populate=*`;
 
+      console.log(chalk.magenta("Invoking Govcenter Endpoint from: "+   api_endpoint_uri));
  
-      const apiInfo = axios.get(config.govcenter_uri_apis, {
+      const apiInfo = axios.get(api_endpoint_uri, {
         headers: {
           'Authorization': `Bearer ${config.api_key}`
         }
@@ -152,7 +157,9 @@ const createMdPage = async()=> {
   
       })
       .catch((error) => {
-        console.error(error)
+
+        console.log(chalk.magenta("Something didn't worked as expect check out the error log \\n "+    error)); 
+        //console.error(error)
       })
 
 
