@@ -6,7 +6,6 @@ import axios from 'axios';
 
 import inquirer from "inquirer";
 import  figlet from "figlet";
-import shell from "shelljs";
 import clear from "clear";
 import path from 'path';
 import * as constants  from './components/constants.js';
@@ -26,10 +25,8 @@ var emoji = require('node-emoji')
 
 const init = () => {
     var logo = `
-===============================================
-    
-    🦈 SharkDoc - API Dev & Doc Portal 
-    
+===============================================    
+    🦈 SharkDoc - API Dev & Doc Portal     
 ===============================================
     `;    
 
