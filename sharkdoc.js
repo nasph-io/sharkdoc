@@ -26,7 +26,7 @@ var emoji = require('node-emoji')
 const init = () => {
     var logo = `
 =====================================================    
-    🦈 SharkDoc - API Dev & Doc Portal   v.0.0.11  
+    🦈 SharkDoc - API Dev & Doc Portal   v.0.0.14  
 =====================================================
     `;    
 
@@ -84,23 +84,30 @@ const createMdPage = async()=> {
       const apiname = answers.apiname;
       const out  = answers.out;
 
+
+
       const options = {};
 
+      var currentPath = process.cwd();
+
+     
+
       //check if local json with properties existies
-      if (!fs.existsSync(__dirname + '/sharkdoc.json') ) {
+      if (!fs.existsSync(currentPath + '/sharkdoc.json') ) {
+
         console.error(` As you haven't created a sharkdoc.json file in the root level from this project, we had created one for you. `);
-        console.error(` Creating the json configs in:  ` + __dirname + '/sharkdoc.json');
+        console.error(` Creating the json configs in:  ` + currentPath + '/sharkdoc.json');
         
-        fs.writeFileSync(__dirname + '/sharkdoc.json', constants.INITIAL_JSON);
+        fs.writeFileSync(currentPath + '/sharkdoc.json', constants.INITIAL_JSON);
         process.exit(1);
       }  
       //end if check if json is in there
 
-      //var currentPath = process.cwd();
 
-      console.log(chalk.magenta("Loading Config JSON from: "+   __dirname +"/sharkdoc.json"));
 
-      const config = require(__dirname +"/sharkdoc.json");
+      console.log(chalk.magenta("Loading Config JSON from: "+   currentPath +"/sharkdoc.json"));
+
+      const config = require(currentPath +"/sharkdoc.json");
 
       //Set our ejs template file, nominating it to read the
       // sibling "main.ejs" file sibling in the same directory
@@ -118,6 +125,7 @@ const createMdPage = async()=> {
       .then((res) => {
 
        var response = jp.query(res.data, '$.data.*');
+       //jsonpath for extract just what matters for building the page
 
        const payloadString = JSON.stringify(response);
 
@@ -142,12 +150,20 @@ const createMdPage = async()=> {
         ejs.renderFile(filename, data, options, function (err, str) {
           // str => Rendered HTML string
           if (err) {
-            console.error(err);
+            
+
+            console.error(chalk.magenta("Error parsing the informed template: "+  err));
+           
           }
+
+          //const mdFileName = currentPath + config.doc_path +  out;
+
+          const mdFileName = config.doc_path +  out;
     
-          const outputFile = path.join(process.cwd(), out+'.md');
+          const outputFile = path.join(process.cwd(), mdFileName+'.md');
           fs.ensureFileSync(outputFile);
           fs.outputFileSync(outputFile, str);
+
           console.log(constants.SPACER_STRING);
           
 
@@ -158,7 +174,7 @@ const createMdPage = async()=> {
       })
       .catch((error) => {
 
-        console.log(chalk.magenta("Something didn't worked as expect check out the error log \\n "+    error)); 
+        console.log(chalk.magenta("Something didn't worked as expect, try again or check out the error log \r\n\t "+    error)); 
         //console.error(error)
       })
 
