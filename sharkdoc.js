@@ -26,7 +26,7 @@ var emoji = require('node-emoji')
 const init = () => {
     var logo = `
 =====================================================    
-    🦈 SharkDoc - API Dev & Doc Portal   v.0.0.14  
+    🦈 SharkDoc - API Dev & Doc Portal   v.0.0.15  
 =====================================================
     `;    
 
@@ -113,7 +113,7 @@ const createMdPage = async()=> {
       // sibling "main.ejs" file sibling in the same directory
       const filename = path.join(__dirname, './templates/md-page.ejs');
 
-      const api_endpoint_uri = config.govcenter_base_uri+ `/api/apis?api_key=${apiname}&populate=*`;
+      const api_endpoint_uri = config.govcenter_base_uri+ `/api/apis?filters[api_key_name][$eq]=${apiname}&populate=*`;
 
       console.log(chalk.magenta("Invoking Govcenter Endpoint from: "+   api_endpoint_uri));
  
