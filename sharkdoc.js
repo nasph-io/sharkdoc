@@ -26,7 +26,7 @@ var emoji = require('node-emoji')
 const init = () => {
     var logo = `
 =====================================================    
-    🦈 SharkDoc - API Dev & Doc Portal   v.0.0.15  
+    🦈 SharkDoc - API Dev & Doc Portal   v. Latest  
 =====================================================
     `;    
 
