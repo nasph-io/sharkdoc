@@ -1,8 +1,7 @@
 
 { 
-  "govcenter_uri_apis": "http://localhost:1337/api/apis?api_key=agritec&populate=*",
   "govcenter_base_uri": "http://localhost:1337/",
   "api_key": "97801c38d44f554fd29d96146082703b6354d7f88d03933c3030585491b7c5e2722bd63f1e9dd6e9fbea0f8125eb844fdcb9f7a4846e87e3c069ef304f10855f032213f47ec06f5ea7dc2cfe605e8ec16136409e7f34686e62737074c44eda689a7441c0b613d4ed2af0e917d874792e24863368af1c0a0e635214f7fa784980",
-  "doc_path": "WHERE IS THE DOC FOLDER INTO YOU DOCUSSAURUS PROJECT",
-  "docproject": "WHERE IS DOCUSSAURUS ROOT"
+  "doc_path": "./docs/apis/",
+  "docproject": "./"
 }
