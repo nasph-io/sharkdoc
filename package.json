@@ -1,7 +1,7 @@
 {
   "name": "sharkdoc",
   "type": "module",
-  "version": "latest",
+  "version": "0.0.17",
   "main": "sharkdoc.js",
   "license": "Apache-2.0",
   "repository": {
