@@ -1,4 +1,4 @@
-export const CREATE_PAGE_ACTION="To create a local api's doc page";
+export const CREATE_PAGE_ACTION="I want to create a local page based into govcenter data";
 export const ADAPT_DOCUSSAURUS="Adapting docussaurus theme (colors and logo)";
 export const INITIAL_JSON = `
 { 

@@ -1,7 +1,7 @@
 {
   "name": "sharkdoc",
   "type": "module",
-  "version": "0.0.17",
+  "version": "0.0.19",
   "main": "sharkdoc.js",
   "license": "Apache-2.0",
   "repository": {
@@ -34,6 +34,7 @@
     "inquirer": "^8.2.0",
     "jsonpath": "^1.1.1",
     "node-emoji": "^1.11.0",
+    "pjson": "^1.0.9",
     "shelljs": "^0.8.5",
     "yargs-parser": "^18.1.3"
   }

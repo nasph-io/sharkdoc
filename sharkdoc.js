@@ -22,12 +22,14 @@ const chalkAnimation = require('chalk-animation');
 var jp = require('jsonpath');
 var emoji = require('node-emoji')
 
+var pjson = require('./package.json');
+
 
 const init = () => {
     var logo = `
-=====================================================    
-    🦈 SharkDoc - API Dev & Doc Portal   v. Latest  
-=====================================================
+===================================================================    
+    🦈 SharkDoc - API Dev & Doc Portal version: ${pjson.version} 
+===================================================================
     `;    
 
   clear();
