@@ -28,9 +28,8 @@ O contrato desta API segue abaixo, assim como histórico de versão:
 Confira as faixas de uso e planos para esta API:
 
 | Plano  | Descrição | Número máximo de requisições  | Valor Mensal (R$)| 
-|--|--|--|
-<% for(var i=0; i<plansPayload.data.length; i++) {%>
-|  <%= plansPayload.data[i].attributes.name %>| <%= plansPayload.data[i].attributes.decription %> | <%= plansPayload.data[i].attributes.numberOfRequests %> | R$ <%=plansPayload.data[i].attributes.price%>
+|--|--|--|--| <% for(var i=0; i<plansPayload.data.length; i++) {%>
+| <%= plansPayload.data[i].attributes.name %> | <%= plansPayload.data[i].attributes.decription %> | <%= plansPayload.data[i].attributes.numberOfRequests %> | R$ <%=plansPayload.data[i].attributes.price%> |
 <% } %>
 
 
