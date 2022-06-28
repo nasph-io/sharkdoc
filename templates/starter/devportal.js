@@ -64,8 +64,6 @@ var empty = `
   } catch (err) {
     console.error(err);
   }
-
-  
 };
 
 main();

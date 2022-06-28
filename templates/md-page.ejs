@@ -14,12 +14,13 @@ sidebar_position: 1
 
 ## Contrato da API
 
-:::tip Swagger/Open API Spec
-
-O contrato desta API segue abaixo, assim como histórico de versão:
-
- - [Versão 1.0.0](swagger/agritec-api/)
-
+:::<%=contractPayload?"tip":"caution"%> Swagger/Open API Spec
+<%=contractPayload?
+  "O contrato desta API segue abaixo, assim como histórico de versão:":
+  "Não foi encontrado um contrato para esta API."%>
+<%=contractPayload?
+  "- ["+contractPayload.info.version+"](/swagger-render?swagger=/swaggers/"+payload.attributes.api_key_name+".json)":
+  ""%>
 :::
 
 
