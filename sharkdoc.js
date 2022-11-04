@@ -134,7 +134,7 @@ const createMdPage = async () => {
 
           // adding just the plans in the context ....
 
-          const plansPayload = JSON.parse(JSON.stringify(payload.attributes.plans));
+          const plansPayload = JSON.parse(JSON.stringify(payload.attributes.api_plans));
 
           // adding just the contract
 
