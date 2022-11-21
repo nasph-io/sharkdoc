@@ -7,7 +7,6 @@ const GitHubClient = axios.create({
   timeout: 1000,
   headers: {
     Accept: "application/vnd.GitHub.v3+json",
-    Authorization: "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",
     //'Authorization': 'token <your-token-here> -- https://docs.github.com/pt/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
   },
 });
